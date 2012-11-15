@@ -139,8 +139,8 @@ NSString* const GCDiscreetNotificationViewActivityKey = @"activity";
     CGPathAddCurveToPoint(path, NULL, CGRectGetMaxX(myFrame), minY, CGRectGetMaxX(myFrame) - GCDiscreetNotificationViewBorderSize, maxY, CGRectGetMaxX(myFrame), maxY);
     CGPathCloseSubpath(path);
     
-    CGContextSetFillColorWithColor(context, [UIColor colorWithWhite:0.0 alpha:0.8].CGColor);
-    CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
+    CGContextSetFillColorWithColor(context, self.fillColor.CGColor);
+    CGContextSetStrokeColorWithColor(context, self.borderColor.CGColor);
     
     CGContextAddPath(context, path);
     CGContextStrokePath(context);

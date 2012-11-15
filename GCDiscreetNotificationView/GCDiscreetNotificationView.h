@@ -26,6 +26,9 @@ typedef enum {
 @property (nonatomic, copy) NSString* textLabel;
 @property (nonatomic, assign) BOOL showActivity;
 
+@property (nonatomic, retain) UIColor *fillColor;
+@property (nonatomic, retain) UIColor *borderColor;
+
 @property (nonatomic, readonly, getter = isShowing) BOOL showing;
 
 - (id) initWithText:(NSString *)text inView:(UIView *)aView;
