@@ -61,6 +61,9 @@ NSString* const GCDiscreetNotificationViewActivityKey = @"activity";
         self.showActivity = activity;
         self.presentationMode = aPresentationMode;
         
+        self.fillColor = [UIColor colorWithWhite:0.000 alpha:0.800];
+        self.borderColor = [UIColor blackColor];
+        
         self.center = self.hidingCenter;
         [self setNeedsLayout];
         
