@@ -68,5 +68,5 @@ You can access directly the notification's label and activity indicator. And cha
 </pre>
 
 
-Extended by [Andreas Zeitler](http://www.azeitler.com), December 2012.
+Extended by "Andreas Zeitler":http://www.azeitler.com, December 2012.
 - add borderColor and fillColor properties to make it stylable
