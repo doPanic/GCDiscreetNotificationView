@@ -198,6 +198,11 @@ NSString* const GCDiscreetNotificationViewActivityKey = @"activity";
 
 - (void) showOrHide:(BOOL)hide animated:(BOOL)animated name:(NSString *)name {
     if ((hide && self.isShowing) || (!hide && !self.isShowing)) {
+        if (hide) self.center = self.showingCenter;
+        else {
+            self.center = self.hidingCenter;
+        }
+        
         if (animated) {
             self.animating = YES;
             [UIView beginAnimations:name context:nil];
@@ -339,15 +344,29 @@ NSString* const GCDiscreetNotificationViewActivityKey = @"activity";
 
 - (CGPoint) showingCenter {
     CGFloat y = 0;
-    if (self.presentationMode == GCDiscreetNotificationViewPresentationModeTop) y = 15;
-    else if (self.presentationMode == GCDiscreetNotificationViewPresentationModeBottom) y = self.view.frame.size.height - 15;
+    if (self.presentationMode == GCDiscreetNotificationViewPresentationModeTop) {
+        y = 15;
+        if ([self.view isEqual:[[UIApplication sharedApplication] keyWindow]]) {
+            y += [[UIApplication sharedApplication] statusBarFrame].size.height;
+        }
+    }
+    else if (self.presentationMode == GCDiscreetNotificationViewPresentationModeBottom) {
+        y = self.view.frame.size.height - 15;
+    }
     return CGPointMake(self.view.frame.size.width / 2, y);
 }
 
 - (CGPoint) hidingCenter {
     CGFloat y = 0;
-    if (self.presentationMode == GCDiscreetNotificationViewPresentationModeTop) y = - 15;
-    else if (self.presentationMode == GCDiscreetNotificationViewPresentationModeBottom) y = 15 + self.view.frame.size.height;
+    if (self.presentationMode == GCDiscreetNotificationViewPresentationModeTop) {
+        y = -15;
+        if ([self.view isEqual:[[UIApplication sharedApplication] keyWindow]]) {
+            y += [[UIApplication sharedApplication] statusBarFrame].size.height;
+        }
+    }
+    else if (self.presentationMode == GCDiscreetNotificationViewPresentationModeBottom) {
+        y = 15 + self.view.frame.size.height;
+    }
     return CGPointMake(self.view.frame.size.width / 2, y);
 }
 
