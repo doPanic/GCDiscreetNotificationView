@@ -25,6 +25,7 @@ typedef enum {
 @property (nonatomic, assign) GCDiscreetNotificationViewPresentationMode presentationMode;
 @property (nonatomic, copy) NSString* textLabel;
 @property (nonatomic, assign) BOOL showActivity;
+@property (nonatomic, assign) CGSize centerOffset;
 
 @property (nonatomic, retain) UIColor *fillColor;
 @property (nonatomic, retain) UIColor *borderColor;

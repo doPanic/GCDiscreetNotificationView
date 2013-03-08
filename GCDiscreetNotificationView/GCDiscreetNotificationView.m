@@ -345,29 +345,29 @@ NSString* const GCDiscreetNotificationViewActivityKey = @"activity";
 - (CGPoint) showingCenter {
     CGFloat y = 0;
     if (self.presentationMode == GCDiscreetNotificationViewPresentationModeTop) {
-        y = 15;
+        y = GCDiscreetNotificationViewHeight * .5f + self.centerOffset.height;
         if ([self.view isEqual:[[UIApplication sharedApplication] keyWindow]]) {
             y += [[UIApplication sharedApplication] statusBarFrame].size.height;
         }
     }
     else if (self.presentationMode == GCDiscreetNotificationViewPresentationModeBottom) {
-        y = self.view.frame.size.height - 15;
+        y = self.view.frame.size.height - GCDiscreetNotificationViewHeight * .5f - self.centerOffset.height;
     }
-    return CGPointMake(self.view.frame.size.width / 2, y);
+    return CGPointMake(self.view.frame.size.width / 2 + self.centerOffset.width, y);
 }
 
 - (CGPoint) hidingCenter {
     CGFloat y = 0;
     if (self.presentationMode == GCDiscreetNotificationViewPresentationModeTop) {
-        y = -15;
+        y = GCDiscreetNotificationViewHeight * -.5f +  + self.centerOffset.height;
         if ([self.view isEqual:[[UIApplication sharedApplication] keyWindow]]) {
             y += [[UIApplication sharedApplication] statusBarFrame].size.height;
         }
     }
     else if (self.presentationMode == GCDiscreetNotificationViewPresentationModeBottom) {
-        y = 15 + self.view.frame.size.height;
+        y = GCDiscreetNotificationViewHeight * .5f + self.view.frame.size.height - self.centerOffset.height;
     }
-    return CGPointMake(self.view.frame.size.width / 2, y);
+    return CGPointMake(self.view.frame.size.width / 2 + self.centerOffset.width, y);
 }
 
 #pragma mark -
