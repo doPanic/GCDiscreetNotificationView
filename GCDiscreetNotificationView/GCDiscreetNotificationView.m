@@ -229,7 +229,10 @@ NSString* const GCDiscreetNotificationViewActivityKey = @"activity";
 #pragma mark Animations
 
 - (void) animationDidStop:(NSString *)animationID finished:(BOOL) finished context:(void *) context {
-    if (animationID == GCHideAnimation) [self.activityIndicator stopAnimating];
+    if (animationID == GCHideAnimation) {
+        [self.activityIndicator stopAnimating];
+        [self removeFromSuperview];
+    }
     else if (animationID == GCChangeProprety) {
         NSString* showName = GCShowAnimation;
         
